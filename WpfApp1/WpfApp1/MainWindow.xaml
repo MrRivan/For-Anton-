@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="330.5">
+    <Grid Margin="0,-18,2,0" RenderTransformOrigin="0.659,0.403">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="14*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="862*"/>
+        </Grid.ColumnDefinitions>
+        <RadioButton x:Name="Area1_RB" Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="89,128,0,0" FlowDirection="RightToLeft" Grid.Column="1" Visibility="Hidden"/>
+        <RadioButton x:Name="Area2_RB" Content="RadioButton" HorizontalAlignment="Left" Margin="89,169,0,0" VerticalAlignment="Top" FlowDirection="RightToLeft" RenderTransformOrigin="0.49,-0.422" Grid.Column="1" Grid.RowSpan="2" Visibility="Hidden" />
+        <RadioButton x:Name="Area3_RB" Content="RadioButton" HorizontalAlignment="Left" Margin="89,39,0,0" VerticalAlignment="Top" FlowDirection="RightToLeft" Grid.Column="1" Grid.Row="1" Visibility="Hidden" />
+        <RadioButton x:Name="Area4_RB" Content="RadioButton" HorizontalAlignment="Left" Margin="89,80,0,0" VerticalAlignment="Top" FlowDirection="RightToLeft" Grid.Column="1" Grid.Row="1" Visibility="Hidden" />
+        <Label x:Name="Area1_Lb" Content="Label" HorizontalAlignment="Left" Margin="89,143,0,0" VerticalAlignment="Top" Width="84" Grid.Column="1" Visibility="Hidden"/>
+        <Label x:Name="Area2_Lb" Content="Label" HorizontalAlignment="Left" Margin="89,13,0,0" VerticalAlignment="Top" Width="84" Grid.Column="1" Grid.Row="1" Visibility="Hidden"/>
+        <Label x:Name="Area3_Lb" Content="Label" HorizontalAlignment="Left" Margin="89,54,0,0" VerticalAlignment="Top" Width="84" Grid.Column="1" Grid.Row="1" Visibility="Hidden"/>
+        <Label x:Name="Area4_Lb" Content="Label" HorizontalAlignment="Left" Margin="89,95,0,143" Width="84" RenderTransformOrigin="-0.024,6.846" Grid.Column="1" Grid.Row="1" Visibility="Hidden"/>
+        <Label x:Name="Sum_False_Lb" Content="Ошибочные ответы " Grid.Column="1" HorizontalAlignment="Left" Margin="165,43,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label x:Name="Sum_True_Lb" Content="Удачные ответы" Grid.Column="1" HorizontalAlignment="Left" Margin="26,43,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.538" Visibility="Hidden"/>
+        <Button x:Name="Start_Bt" Content="Начать " Grid.Column="1" HorizontalAlignment="Left" Margin="99,44,0,0" VerticalAlignment="Top" Width="77" Grid.Row="1" Click="Button_Click"/>
+        <Label x:Name="Start_Lb" Content="Начать тест!" Grid.Column="1" HorizontalAlignment="Left" Margin="99,8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Foreground="#FF0C0B0B" Background="#00000000"/>
+        <Label x:Name="Main_Lb" Content="0х0" Grid.Column="1" HorizontalAlignment="Left" Margin="89,97,0,0" VerticalAlignment="Top" Width="87" Visibility="Hidden" HorizontalContentAlignment="Center"/>
+        <Label x:Name="Sum_True_Tb" Content="0" Grid.Column="1" HorizontalAlignment="Left" Margin="59,69,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label x:Name="Sum_False_Tb" Content="0" Grid.Column="1" HorizontalAlignment="Left" Margin="226,69,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+    </Grid>
+</Window>
