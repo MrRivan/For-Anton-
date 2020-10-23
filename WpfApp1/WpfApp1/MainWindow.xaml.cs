@@ -21,12 +21,16 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        Random random = new Random();
+        int First_Number_1;
+        int First_Number_2;
+        int beacon;
         private void Visibility_All()
         {
             Start_Bt.Visibility = Visibility.Hidden;
             Start_Lb.Visibility = Visibility.Hidden;
             Thread.Sleep(500);
+            Main_Bt.Visibility = Visibility.Visible;
             Main_Lb.Visibility = Visibility.Visible;
             Sum_False_Lb.Visibility = Visibility.Visible;
             Sum_False_Tb.Visibility = Visibility.Visible;
@@ -39,7 +43,6 @@ namespace WpfApp1
         }
         private int Support_Random(int a, int b)
         {
-            Random random = new Random();
             int c = 0;
             do
             {
@@ -49,19 +52,26 @@ namespace WpfApp1
         }
         private void check_answer(ref int Sum_true, ref int Sum_false, int etalon)
         {
+            if((Area1_RB.IsChecked == false)&& (Area2_RB.IsChecked == false)&& (Area3_RB.IsChecked == false)&& (Area4_RB.IsChecked == false))
+            {
+                MessageBox.Show("Выберите один из вариантов");
+                return;
+            }
             if (Area1_RB.IsChecked == true)
             {
                 int check = 1;
                 if(check==etalon)
                 {
                     Sum_true++;
-                    Area1_Lb.Content = "Парвильно!";
+                    Area1_Lb.Visibility = Visibility.Visible;
+                    Area1_Lb.Content = "Правильно!";
                     Area1_Lb.Background = Brushes.Green;
                 }
                 else
                 {
                     Sum_false++;
-                    Area1_Lb.Content = "Не парвильно!";
+                    Area1_Lb.Visibility = Visibility.Visible;
+                    Area1_Lb.Content = "Не правильно!";
                     Area1_Lb.Background = Brushes.Red;
                 }
             }
@@ -71,13 +81,15 @@ namespace WpfApp1
                 if (check == etalon)
                 {
                     Sum_true++;
-                    Area2_Lb.Content = "Парвильно!";
+                    Area2_Lb.Visibility = Visibility.Visible;
+                    Area2_Lb.Content = "Правильно!";
                     Area2_Lb.Background = Brushes.Green;
                 }
                 else
                 {
                     Sum_false++;
-                    Area2_Lb.Content = "Не парвильно!";
+                    Area2_Lb.Visibility = Visibility.Visible;
+                    Area2_Lb.Content = "Не правильно!";
                     Area2_Lb.Background = Brushes.Red;
                 }
             }
@@ -87,13 +99,15 @@ namespace WpfApp1
                 if (check == etalon)
                 {
                     Sum_true++;
-                    Area3_Lb.Content = "Парвильно!";
+                    Area3_Lb.Visibility = Visibility.Visible;
+                    Area3_Lb.Content = "Правильно!";
                     Area3_Lb.Background = Brushes.Green;
                 }
                 else
                 {
                     Sum_false++;
-                    Area3_Lb.Content = "Не парвильно!";
+                    Area3_Lb.Visibility = Visibility.Visible;
+                    Area3_Lb.Content = "Не правильно!";
                     Area3_Lb.Background = Brushes.Red;
                 }
             }
@@ -103,15 +117,60 @@ namespace WpfApp1
                 if (check == etalon)
                 {
                     Sum_true++;
-                    Area4_Lb.Content = "Парвильно!";
+                    Area4_Lb.Visibility = Visibility.Visible;
+                    Area4_Lb.Content = "Правильно!";
                     Area4_Lb.Background = Brushes.Green;
                 }
                 else
                 {
                     Sum_false++;
-                    Area4_Lb.Content = "Не парвильно!";
+                    Area4_Lb.Visibility = Visibility.Visible;
+                    Area4_Lb.Content = "Не правильно!";
                     Area4_Lb.Background = Brushes.Red;
                 }
+            }
+        }
+        private void Preprocess ()
+        {
+            int New_Number_1;
+            int New_Number_2;
+            do
+            {
+                New_Number_1 = random.Next(1, 9);
+            } while (New_Number_1 == First_Number_1);
+            {
+                New_Number_2 = random.Next(1, 9);
+            } while (New_Number_2 == First_Number_2) ;
+            First_Number_1 = New_Number_1;
+            First_Number_2 = New_Number_2;
+            Main_Lb.Content = $"{First_Number_1}x{First_Number_2}";
+            beacon = random.Next(1, 4);
+            switch (beacon)
+            {
+                case 1:
+                    Area1_RB.Content = $"{First_Number_1 * First_Number_2}";
+                    Area2_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
+                    Area3_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
+                    Area4_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
+                    break;
+                case 2:
+                    Area2_RB.Content = $"{First_Number_1 * First_Number_2}";
+                    Area1_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
+                    Area3_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
+                    Area4_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
+                    break;
+                case 3:
+                    Area3_RB.Content = $"{First_Number_1 * First_Number_2}";
+                    Area2_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
+                    Area1_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
+                    Area4_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
+                    break;
+                case 4:
+                    Area4_RB.Content = $"{First_Number_1 * First_Number_2}";
+                    Area2_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
+                    Area3_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
+                    Area1_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
+                    break;
             }
         }
         public MainWindow()
@@ -119,58 +178,48 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Random random = new Random();
+        
+        public void Button_Click(object sender, RoutedEventArgs e)
+        {    
             Visibility_All();
-            int Sum_true = 0;
-            int Sum_false = 0;
-            int First_Number_1 = random.Next(1, 9);
-            int First_Number_2 = random.Next(1, 9);
-            int beacon;
-            
-                Main_Lb.Content = $"{First_Number_1}x{First_Number_2}";
-                beacon = random.Next(1, 4);
-                switch (beacon)
-                {
-                    case 1:
-                        Area1_RB.Content = $"{First_Number_1 * First_Number_2}";
-                        Area2_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
-                        Area3_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
-                        Area4_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
-                        check_answer(ref Sum_true, ref Sum_false, beacon);
-                        break;
-                    case 2:
-                        Area2_RB.Content = $"{First_Number_1 * First_Number_2}";
-                        Area1_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
-                        Area3_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
-                        Area4_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
-                        check_answer(ref Sum_true, ref Sum_false, beacon);
-                        break;
-                    case 3:
-                        Area3_RB.Content = $"{First_Number_1 * First_Number_2}";
-                        Area2_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
-                        Area1_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
-                        Area4_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
-                        check_answer(ref Sum_true, ref Sum_false, beacon);
-                        break;
-                    case 4:
-                        Area4_RB.Content = $"{First_Number_1 * First_Number_2}";
-                        Area2_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
-                        Area3_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
-                        Area1_RB.Content = $"{Support_Random(First_Number_1, First_Number_2)}";
-                        check_answer(ref Sum_true, ref Sum_false, beacon);
-                        break;
-                }
-                Thread.Sleep(2000);
-
-            
+            First_Number_1 = random.Next(1, 9);
+            First_Number_2 = random.Next(1, 9);
+            Preprocess();           
         }
 
-   
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (int.Parse(Sum_True_Tb.Content.ToString()) < 10)
+            {
+                int Sum_true = int.Parse(Sum_True_Tb.Content.ToString());
+                int Sum_false = int.Parse(Sum_False_Tb.Content.ToString());
+                check_answer(ref Sum_true, ref Sum_false, beacon);
+                Sum_True_Tb.Content = $"{Sum_true}";
+                Sum_False_Tb.Content = $"{Sum_false}";
+                Thread.Sleep(3000);
+                Area4_Lb.Background = Brushes.White;
+                Area3_Lb.Background = Brushes.White;
+                Area2_Lb.Background = Brushes.White;
+                Area1_Lb.Background = Brushes.White;
+                Area1_Lb.Visibility = Visibility.Hidden;
+                Area2_Lb.Visibility = Visibility.Hidden;
+                Area3_Lb.Visibility = Visibility.Hidden;
+                Area4_Lb.Visibility = Visibility.Hidden;
+                Area1_RB.IsChecked = false;
+                Area2_RB.IsChecked = false;
+                Area3_RB.IsChecked = false;
+                Area4_RB.IsChecked = false;
+                Preprocess();
+            }
+            else
+            {
+                MessageBox.Show("Поздравляю вы завершили тест!");
+                return;
+            }
 
+        }
 
-
+            
 
         //private void tbSum_TextChanged(object sender, TextChangedEventArgs e)
         //{
